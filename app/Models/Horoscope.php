@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Horoscope extends Model
 {
     use HasFactory;
+
+    protected $table = 'horoscopes';
+
+    protected $primaryKey = 'name';
+
+    
 }

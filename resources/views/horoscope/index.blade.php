@@ -25,5 +25,19 @@
         <input type="submit" value="Submit Date">
     </form>
     <p>{{ $horoscope_sign ?? '' }}</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        @foreach ($horoscope_table as $row)
+        <tr>
+            <th>{{ $row->name }}</th>
+            <th>{{ $row->start_date }}</th>
+            <th>{{ $row->end_date }}</th>
+        </tr>
+        @endforeach
+    </table>
 </body>
 </html>
