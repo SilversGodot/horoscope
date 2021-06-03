@@ -32,14 +32,14 @@
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
-        @foreach ($horoscope_table as $row)
+        @forelse ($horoscope_table ?? [] as $row)
         <tr>
             <th>{{ $row->name }}</th>
             <th>{{ $row->start_date }}</th>
             <th>{{ $row->end_date }}</th>
         </tr>
-        @endforeach
+        @empty
+        @endforelse
     </table>
-
 </body>
 </html>
