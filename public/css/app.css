@@ -1,0 +1,88 @@
+.circle-container {
+    position: relative;
+    width: 30em;
+    height: 30em;
+    border-radius: 50%;
+    padding: 0;
+    list-style: none;
+    margin: 5em auto 0;
+  }
+
+  .circle-container > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -3em;
+    width: 6em;
+    height: 6em;
+  }
+
+  .circle-container > *:nth-of-type(1) {
+    transform: rotate(0deg) translate(15em) rotate(0deg);
+  }
+
+  .circle-container > *:nth-of-type(2) {
+    transform: rotate(30deg) translate(15em) rotate(-30deg);
+  }
+
+  .circle-container > *:nth-of-type(3) {
+    transform: rotate(60deg) translate(15em) rotate(-60deg);
+  }
+
+  .circle-container > *:nth-of-type(4) {
+    transform: rotate(90deg) translate(15em) rotate(-90deg);
+  }
+
+  .circle-container > *:nth-of-type(5) {
+    transform: rotate(120deg) translate(15em) rotate(-120deg);
+  }
+
+  .circle-container > *:nth-of-type(6) {
+    transform: rotate(150deg) translate(15em) rotate(-150deg);
+  }
+
+  .circle-container > *:nth-of-type(7) {
+    transform: rotate(180deg) translate(15em) rotate(-180deg);
+  }
+
+  .circle-container > *:nth-of-type(8) {
+    transform: rotate(210deg) translate(15em) rotate(-210deg);
+  }
+
+  .circle-container > *:nth-of-type(9) {
+    transform: rotate(240deg) translate(15em) rotate(-240deg);
+  }
+
+  .circle-container > *:nth-of-type(10) {
+    transform: rotate(270deg) translate(15em) rotate(-270deg);
+  }
+
+  .circle-container > *:nth-of-type(11) {
+    transform: rotate(300deg) translate(15em) rotate(-300deg);
+  }
+
+  .circle-container > *:nth-of-type(12) {
+    transform: rotate(330deg) translate(15em) rotate(-330deg);
+  }
+
+  .circle-container > *:nth-of-type(13) {
+    transform: translate(-5.5em, -5.5em);
+    width: 16em;
+    height: 16em;
+    background-color: lightgray;
+    border-radius: 50%;
+  }
+
+  .circle-container img {
+    display: block;
+    max-width: 75%;
+    filter: grayscale(100%);
+    transition: .15s;
+    opacity: .5;
+  }
+
+  .circle-container img:hover {
+    filter: grayscale(0);
+    opacity: 1;
+  }

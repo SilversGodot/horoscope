@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HoroscopeController;
+use App\Http\Controllers\PersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,5 @@ use App\Http\Controllers\HoroscopeController;
 
 Route::get('/horoscope', [HoroscopeController::class, 'index']);
 Route::post('/horoscope', [HoroscopeController::class, 'getDate'])->name('submit_date');
+
+Route::resource('/person', PersonController::class);
