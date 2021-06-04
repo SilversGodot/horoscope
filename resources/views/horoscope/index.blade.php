@@ -36,18 +36,18 @@
 
     <div>
         <ul class='circle-container'>
-            <li><img src='/img/Cancer.png'></li>
-            <li><img src='/img/Leo.png'></li>   
-            <li><img src='/img/Virgo.png'></li>
-            <li><img src='/img/Libra.png'></li>
-            <li><img src='/img/Scorpio.png'></li>
-            <li><img src='/img/Sagittarius.png'></li>
-            <li><img src='/img/Capricorn.png'></li>
-            <li><img src='/img/Aquarius.png'></li>
-            <li><img src='/img/Pisces.png'></li>
-            <li><img src='/img/Aries.png'></li>
-            <li><img src='/img/Taurus.png'></li>
-            <li><img src='/img/Gemini.png'></li>         
+            <li><img id="Cancer_Sign" src='img/Cancer.png'></li>
+            <li><img id="Leo_Sign" src='img/Leo.png' class="matched"></li>   
+            <li><img id="Virgo_Sign" src='img/Virgo.png'></li>
+            <li><img id="Libra_Sign" src='img/Libra.png'></li>
+            <li><img id="Scorpio_Sign" src='img/Scorpio.png'></li>
+            <li><img id="Sagittarius_Sign" src='img/Sagittarius.png'></li>
+            <li><img id="Capricorn_Sign" src='img/Capricorn.png'></li>
+            <li><img id="Aquarius_Sign" src='img/Aquarius.png'></li>
+            <li><img id="Pisces_Sign" src='img/Pisces.png'></li>
+            <li><img id="Aries_Sign" src='img/Aries.png'></li>
+            <li><img id="Taurus_Sign" src='img/Taurus.png'></li>
+            <li><img id="Gemini_Sign" src='img/Gemini.png'></li>        
             <li>
                 <div class="text-white p-3 mb-4 text-center" style="transform: translate(0.25em, 3em);">
                     <form action="{{ route('submit_date') }}" method='post'>
@@ -69,20 +69,25 @@
 
     <p>{{ $horoscope_sign ?? '' }}</p>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-        </tr>
-        @foreach ($horoscope_table as $row)
-        <tr>
-            <th>{{ $row->name }}</th>
-            <th>{{ $row->start_date }}</th>
-            <th>{{ $row->end_date }}</th>
-        </tr>
-        @endforeach
+    <div class="container-sm mt-5">
+        <table>
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($horoscope_table as $row)
+                <tr id="{{$row->name}}_Row">
+                    <th scope="row">{{ $row->name }}</th>
+                    <td>{{ $row->start_date }}</td>
+                    <td>{{ $row->end_date }}</td>
+                </tr>
+                @endforeach
+            </tbody>
     </table>
-
+    </div>
 </body>
 </html>
