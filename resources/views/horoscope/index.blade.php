@@ -70,7 +70,7 @@
     <p>{{ $horoscope_sign ?? '' }}</p>
 
     <div class="container-sm mt-5">
-        <table>
+        <table class="table">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Name</th>
@@ -87,7 +87,7 @@
                 </tr>
                 @endforeach
             </tbody>
-    </table>
+        </table>
     </div>
 </body>
 </html>

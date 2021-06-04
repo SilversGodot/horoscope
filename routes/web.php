@@ -15,4 +15,6 @@ use App\Http\Controllers\HoroscopeController;
 */
 
 Route::get('/horoscope', [HoroscopeController::class, 'index']);
+Route::get('/horoscope', [HoroscopeController::class, 'getHoroscopeListAjax']);
+Route::get('/horoscope', [HoroscopeController::class, 'getHoroscopeAjax'])->name('horoscope');
 Route::post('/horoscope', [HoroscopeController::class, 'getDate'])->name('submit_date');

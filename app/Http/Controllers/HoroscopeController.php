@@ -15,18 +15,49 @@ class HoroscopeController extends Controller
 
     public function getDate(Request $request) {
         $input_date = $request->input('input_date');
+
+        // TODO implement format check method
+
+        $horoscope = getHoroscope($input_date);
+        $horoscopeList = getHoroscopeList();
+
+        return view('horoscope.index', ['horoscope_sign' => $horoscope, 'horoscope_table' => $horoscopeList]);
+    }
+
+    public function getHoroscopeAjax(Request $request)
+    {
+        $input_date = $request->input('input_date');
         // format check
 
+        $horoscope = getHoroscope($input_date);
+        
+        return response() -> json(['Horoscope' => $horoscope]);
+    }
+
+    public function getHoroscopeListAjax()
+    {
+        $horoscopeList = getHoroscopeList();
+        
+        return Response::json(array('horoscopeList' => $horoscopeList));
+    }
+
+    private function getHoroscopeList()
+    {
+        return DB::table('horoscopes') ->get();
+    }
+
+    private function getHoroscope(string $input_date)
+    {
         $query_result = DB::table('horoscopes')
-            ->whereMonth('start_date', '=', date("m",strtotime($input_date)))
-            ->orWhereMonth('end_date', '=', date("m",strtotime($input_date)))
+            ->whereMonth('start_date', '=', date("m", strtotime($input_date)))
+            ->orWhereMonth('end_date', '=', date("m", strtotime($input_date)))
             ->orderBy('start_date')
             ->get();
-        $otherResult = Horoscope::all();
+
         $result = "";
 
-        if (date("m",strtotime($input_date)) ==  1) {
-            if ( date("d",strtotime($input_date)) < date("d", strtotime($query_result[1]->start_date)) ) {
+        if (date("m", strtotime($input_date)) ==  1) {
+            if ( date("d", strtotime($input_date)) < date("d", strtotime($query_result[1]->start_date))) {
                 $result = $query_result[1]->name;
             }
             else {
@@ -34,7 +65,7 @@ class HoroscopeController extends Controller
             }
         }
         else {
-            if ( date("d",strtotime($input_date)) < date("d", strtotime($query_result[1]->start_date)) ) {
+            if ( date("d", strtotime($input_date)) < date("d", strtotime($query_result[1]->start_date))) {
                 $result = $query_result[0]->name;
             }
             else {
@@ -42,9 +73,6 @@ class HoroscopeController extends Controller
             }
         }
 
-        $full_table = DB::table('horoscopes')
-            ->get();
-
-        return view('horoscope.index', ['horoscope_sign' => $result, 'horoscope_table' => $full_table]);
+        return $result;
     }
 }
