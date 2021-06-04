@@ -89,7 +89,7 @@
                 </tr>
                 @endforeach
             </tbody>
-    </table>
+        </table>
     </div>
 </body>
 </html>

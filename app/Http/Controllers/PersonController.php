@@ -15,7 +15,13 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $persons = Person::all();
+        $persons = Person::select('horoscope', 'gender', DB::raw('count(*) as count'))
+            ->groupBy('horoscope', 'gender')
+            ->orderBy('horoscope')
+            ->get();
+
+        //select horoscope, gender, count(*) from people group by horoscope;
+
         return view('person.index', ['persons' => $persons]);
     }
 
@@ -80,7 +86,7 @@ class PersonController extends Controller
             'horoscope' => $horoscope_result
         ]);
 
-        return redirect('/person/create');
+        return redirect('/person');
     }
 
     /**
