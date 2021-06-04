@@ -72,7 +72,7 @@
     <p>{{ $horoscope_sign ?? '' }}</p>
 
     <div class="container-sm mt-5">
-        <table>
+        <table class="table">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Name</th>
@@ -81,7 +81,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($horoscope_table as $row)
+                @foreach ($horoscope_table ?? [] as $row)
                 <tr id="{{$row->name}}_Row">
                     <th scope="row">{{ $row->name }}</th>
                     <td>{{ $row->start_date }}</td>

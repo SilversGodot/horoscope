@@ -14,6 +14,11 @@
             <br>
             <input type="text" name="lname" id="lname" placeholder="Last Name" required>
             <br>
+            <select name="gender" id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <br>
             <input type="date" name="birthday" id="birthday" required>
             <br>
             <input type="number" name="house_number" id="house_number" placeholder="House Number" required>
@@ -76,7 +81,9 @@
                 <option value="West Virginia">West Virginia</option>
                 <option value="Wisconsin">Wisconsin</option>
                 <option value="Wyoming">Wyoming</option>
-              </select>
+            </select>
+            <br>
+            <input type="number" name="postal_code" id="postal_code" placeholder="Postal Code" required>
             <br>
             <button type="submit">Submit</button>
         </div>

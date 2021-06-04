@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Person;
+use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller
 {
@@ -36,15 +37,50 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
+        $input_date = $request->input('birthday');
+        // format check
+
+        $query_result = DB::table('horoscopes')
+            ->whereMonth('start_date', '=', date("m",strtotime($input_date)))
+            ->orWhereMonth('end_date', '=', date("m",strtotime($input_date)))
+            ->orderBy('start_date')
+            ->get();
+        $horoscope_result = "";
+
+        if (date("m",strtotime($input_date)) ==  1) {
+            if ( date("d",strtotime($input_date)) < date("d", strtotime($query_result[1]->start_date)) ) {
+                $horoscope_result = $query_result[1]->name;
+            }
+            else {
+                $horoscope_result = $query_result[0]->name;
+            }
+        }
+        else {
+            if ( date("d",strtotime($input_date)) < date("d", strtotime($query_result[1]->start_date)) ) {
+                $horoscope_result = $query_result[0]->name;
+            }
+            else {
+                $horoscope_result = $query_result[1]->name;
+            }
+        }
+
+        // dd($horoscope_result);
+
         $newPerson = Person::create([
-            "first_name" => $request->input('fname'),
-            "last_name" => $request->input('lname'),
-            "house_number" => $request->input('house_number'),
-            "street_name" => $request->input('street_name'),
-            "street_type" => $request->input('street_type'),
-            "city" => $request->input('city'),
+            'first_name' => $request->input('fname'),
+            'last_name' => $request->input('lname'),
+            'house_number' => $request->input('house_number'),
+            'street_name' => $request->input('street_name'),
+            'street_type' => $request->input('street_type'),
+            'city' => $request->input('city'),
+            'state' => $request->input('state'),
+            'postal_code' => $request->input('postal_code'),
+            'birthday' => $request->input('birthday'),
+            'gender' => $request->input('gender'),
+            'horoscope' => $horoscope_result
         ]);
-        dd('OK');
+
+        return redirect('/person/create');
     }
 
     /**

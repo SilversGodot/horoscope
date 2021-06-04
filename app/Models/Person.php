@@ -11,5 +11,17 @@ class Person extends Model
 
     protected $table = 'people';
     protected $primaryKey = 'id';
-    protected $timestamps = true;
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'house_number',
+        'street_name',
+        'street_type',
+        'city',
+        'state',
+        'postal_code',
+        'birthday',
+        'gender',
+        'horoscope'
+    ];
 }
