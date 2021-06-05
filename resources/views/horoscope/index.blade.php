@@ -72,7 +72,7 @@
         </ul>
     </div>
 
-    <p>{{ $horoscope_sign ?? '' }}</p>
+    <div class="loader"></div>
 
     <div class="container-sm mt-5">
         <table id="horoscopeTable" class="table">

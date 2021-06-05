@@ -1,6 +1,15 @@
 require('./bootstrap');
 
 $(function(){
+    var $loading = $('#loader').hide();
+    $(document)
+    .ajaxStart(function () {
+        $loading.show();
+    })
+    .ajaxStop(function () {
+        $loading.hide();
+    });
+
     // loading horoscope list
     $.getJSON("/horoscope/list", function(data) {
 		//iterate json response
@@ -32,7 +41,7 @@ $(function(){
         }
 
         // Query web service for horoscope
-        var url = "/horoscope/result?input_date=" + $("datepicker").val();
+        var url = "/horoscope/result?input_date=" + $("#datepicker").val();
         $.getJSON(url, function(data) {
             var updateHoroscope = data.Horoscope;
             $("#" + updateHoroscope + "_Sign").attr("style", "opacity: 1; filter: grayscale(0);");
