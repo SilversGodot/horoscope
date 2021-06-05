@@ -75,7 +75,7 @@
     <p>{{ $horoscope_sign ?? '' }}</p>
 
     <div class="container-sm mt-5">
-        <table class="table">
+        <table id="horoscopeTable" class="table">
             <thead class="table-light">
                 <tr>
                     <th scope="col">Name</th>
