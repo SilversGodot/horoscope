@@ -18,6 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="{{ asset('js/app.js') }}"></script>
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" >
 
     <title>Horoscope</title>
@@ -52,12 +54,13 @@
             <li><img id="Gemini_Sign" src='img/Gemini.png'></li>        
             <li>
                 <div class="text-white p-3 mb-4 text-center" style="transform: translate(0.25em, 3em);">
-                    <form action="{{ route('submit_date') }}" method='post'>
+                    <form id="myform" action="{{ route('submit_date') }}" method='post'>
                         {{ csrf_field() }}
                         <div>
                             <label class="form-label text-uppercase text-dark fw-bold">Birthday:</label>
                         </div>
                         <div>
+                            <input type="hidden" id="currentHoroscope" name="currentHoroscope" value="{{ $horoscope_sign ?? '' }}">
                             <input type="date" id="datepicker" name="input_date" class="form-control text-dark fw-bold col-sm-3" style="color: transparent;" />
                         </div>         
                         <div class="p-3">
